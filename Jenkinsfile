@@ -17,7 +17,7 @@ pipeline{
                     sh "docker login -u abdulgayaz123/ -p ${hubbpwd}"
                     sh "docker push abdulgayaz123/hiring:0.0.2"
                 }
-        }
+            }
         stage('Docker Deploy') {
             steps {
                 sshagent(['docker-host']) {
