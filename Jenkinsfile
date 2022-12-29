@@ -8,14 +8,14 @@ pipeline{
         }
         stage('Docker Build'){
             steps{
-                sh "docker build -t pereeee04/hiring:0.0.2 ."
+                sh "docker build -t abdulgayaz123/hiring:0.0.2 ."
             }
         }
         stage('Docker Push'){
             steps{
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'hubPWD')]) {
                     sh "docker login -u pereeee04 -p ${hubPWD}"
-                    sh "docker push pereeee04/hiring:0.0.2"
+                    sh "docker push abdulgayaz123/hiring:0.0.2"
                 }
             }
         }
