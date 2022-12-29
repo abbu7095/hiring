@@ -14,7 +14,7 @@ pipeline{
         stage('Docker Push'){
             steps{
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'hubPWD')]) {
-                    sh "docker login -u pereeee04 -p ${hubPWD}"
+                    sh "docker login -u abdulgayaz123/ -p ${hubPWD}"
                     sh "docker push abdulgayaz123/hiring:0.0.2"
                 }
             }
@@ -22,7 +22,7 @@ pipeline{
         stage('Docker Deploy') {
             steps {
                 sshagent(['docker-host']) {
-                    sh "ssh ec2-user@172.31.41.78 docker run -d -p 8080:8080 --name prerana pereeee04/hiring:0.0.2"
+                    sh "ssh ec2-user@172.31.41.78 docker run -d -p 8080:8080 --name prerana abdulgayaz123//hiring:0.0.2"
                 }
             }
         }
