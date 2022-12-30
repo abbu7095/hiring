@@ -13,16 +13,16 @@ pipeline{
         }
         stage('Docker Push'){
             steps{
-                withCredentials([string(credentialsId: 'docker-hub', variable: 'hubbpwd')]) {
-                    sh "docker login -u abdulgayaz123/ -p ${hubbpwd}"
+                withCredentials([string(credentialsId: 'docker', variable: 'hubPWD')]) {
+                    sh "docker login -u abdulgayaz123 -p ${hubPWD}"
                     sh "docker push abdulgayaz123/hiring:0.0.2"
                 }
             }
         }
         stage('Docker Deploy') {
             steps {
-                sshagent(['docker-host']) {
-                    sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.40.72 docker run -d -p 8080:8080 --name abbu abdulgayaz123//hiring:0.0.2"
+                sshagent(['docker-hub']) {
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.40.72 docker run -d -p 8080:8080 --name hiring abdulgayaz123//hiring:0.0.2"
                 }
             }
         }
