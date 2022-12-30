@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2 style="color: red">Hello GUVI GEEK</h2>
+<h2 style="color: green">Jenkins hello world</h2>
 </body>
 </html>
