@@ -22,7 +22,7 @@ pipeline{
         stage('Docker Deploy') {
             steps {
                 sshagent(['docker-hub']) {
-                    sh "ssh ec2-user@172.31.40.72 docker run -d -p 8080:8080 --name hiring abdulgayaz123//hiring:0.0.2"
+                    sh "ssh ec2-user@172.31.40.72 docker run -d -p 8080:8080 --name hiring abdulgayaz123/hiring:0.0.2"
                 }
             }
         }
